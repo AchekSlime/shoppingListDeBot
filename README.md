@@ -1,53 +1,52 @@
-# Follow the next steps to create your debot. Run the following commands 
+# Cледуйте следующим шагам, чтобы создать своего debot. Выполните следующие команды
 
-## First you need to prepare some files.
-This command returns you `ShopListDebot.abi.json` file in hex format. We'll need it when calliing the setABI function. It's mandatory.
+##  Для начала вам нужно подготовить несколько файлов.
+Эта команда возвращает вам файл `ShopListDebot.abi.json` в шестнадцатеричном формате. Он понадобится нам при вызове функции setABI. Это обязательно.
 ```shell 
 cat ShopListDebot.abi.json | xxd -ps -c 20000
-```
+``` 
 Put the output of this function in the `dabi.json` file. And make the following json format `{"dabi":"output of the previous command"}`
-
----
-This command returns the information about your `shopList.sol` contract wich needed for creating the initial state your shopping list
+  
+---  
+Эта команда возвращает информацию о вашем контракте `shopList.sol`, которая необходима для создания начального состояния вашего списка покупок
 ```shell 
-tonos decode stateinit shopList.tvc --tvc 
-```
-Put the output of this function in the `code.json` file.
+tonos decode stateinit shopList.tvc --tvc
+```  
+Поместите вывод этой функции в файл `code.json`.
+  
+---  
+## Автоматический способ с помощью bash  скрипта
+1. Вам необходимо подготовить файл `code.file`, как указано выше
+2. Просто запустите bash-скрипт `localDebot.sh`.
 
----
-## Automatic way with bash script
-1. You need to prepare the `code.file` as above
-2. Just run the `localDebot.sh` bash script
-
-## Commands for deploying and running debot manually
-1. 
-```
-tonos genaddr ShopListDebot.tvc --genkey debot.keys.json ShopListDebot.abi.json > log.log
+## Команды для развертывания и запуска debot вручную
+1.
+```  
+tonos genaddr ShopListDebot.tvc --genkey debot.keys.json ShopListDebot.abi.json > log.log  
 ``` 
-This command generates key pair for your debot to the `debot.keys.json` file and puts information about it to the `log.log` file.
-
-2. 
-```
-tonos -u http://localhost call 0:b5e9240fc2d2f1ff8cbb1d1dee7fb7cae155e5f6320e585fcc685698994a19a5 --abi giver.abi.json --sign giver.keys.json sendTransaction '{"dest":"<address>","value":10000000000,"bounce":false}'
+Эта команда генерирует пару ключей для вашего debot в файл `debot.keys.json` и помещает информацию об этом в файл `log.log`.
+2.
+```  
+tonos -u http://localhost call 0:b5e9240fc2d2f1ff8cbb1d1dee7fb7cae155e5f6320e585fcc685698994a19a5 --abi giver.abi.json --sign giver.keys.json sendTransaction '{"dest":"<address>","value":10000000000,"bounce":false}'  
 ``` 
-This command sends tokens to address <address> from the `log.log` file in the `Raw address: 0:...` field.
-3. 
-```
-tonos -u http://localhost deploy ShopListDebot.tvc "{}" --sign debot.keys.json --abi ShopListDebot.abi.json
-```
-This command just deploys your debot.
-4. 
-```
-tonos -u http://localhost call <address> setABI dabi.json --abi ShopListDebot.abi.json --sign debot.keys.json
-```
-This function calls the required `setABI` function for debot.
-5. 
-```
-tonos -u http://localhost call <address> setCode code.json --abi ShopListDebot.abi.json --sign debot.keys.json
-```
-This command sets initial state for your debot.
+Эта команда отправляет токены на адрес <адрес> из файла `log.log` в поле `Raw address: 0:...` поле.
+3.
+```  
+tonos -u http://localhost deploy ShopListDebot.tvc "{}" --sign debot.keys.json --abi ShopListDebot.abi.json  
+```  
+Эта команда просто деплоит вашего debot-а.
+4.
+```  
+tonos -u http://localhost call <address> setABI dabi.json --abi ShopListDebot.abi.json --sign debot.keys.json  
+```  
+Эта функция вызывает необходимую функцию `setABI` для debot.
+5.
+```  
+tonos -u http://localhost call <address> setCode code.json --abi ShopListDebot.abi.json --sign debot.keys.json  
+```  
+Эта команда устанавливает начальное состояние для вашего debot.
 
-## Run debot
-```
-tonos -u http://localhost debot fetch <address>
+## Запуск debot
+```  
+tonos -u http://localhost debot fetch <address>  
 ```
