@@ -5,8 +5,8 @@
 ```shell 
 cat ShopListDebot.abi.json | xxd -ps -c 20000
 ``` 
-Put the output of this function in the `dabi.json` file. And make the following json format `{"dabi":"output of the previous command"}`
-  
+Поместите вывод этой функции в файл dabi.json. И сделайте следующий формат json {"dabi": "вывод предыдущей команды"}.
+
 ---  
 Эта команда возвращает информацию о вашем контракте `shopList.sol`, которая необходима для создания начального состояния вашего списка покупок
 ```shell 
