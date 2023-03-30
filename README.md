@@ -30,7 +30,7 @@ tonos genaddr ShopListDebot.tvc --genkey debot.keys.json ShopListDebot.abi.json 
 ```  
 tonos -u http://localhost call 0:b5e9240fc2d2f1ff8cbb1d1dee7fb7cae155e5f6320e585fcc685698994a19a5 --abi giver.abi.json --sign giver.keys.json sendTransaction '{"dest":"<address>","value":10000000000,"bounce":false}'  
 ``` 
-Эта команда отправляет токены на адрес <адрес> из файла `log.log` в поле `Raw address: 0:...` поле.
+Эта команда отправляет токены на адрес из файла `log.log` в поле `Raw address: 0:...` поле.
 
 3.
 ```  
