@@ -1,0 +1,17 @@
+Input arguments:
+     tvc: ShopListDebot.tvc
+     abi: ShopListDebot.abi.json
+      wc: -1
+    keys: debot.keys.json
+init_data: None
+is_update_tvc: None
+
+Seed phrase: "guess buddy program reduce glory common jelly bubble monkey wheel infant wire"
+Raw address: -1:f5d98c1c65903501face67a75b4ee68bbec7e0e53e5269468505505034c55d0d
+testnet:
+Non-bounceable address (for init): 0f_12YwcZZA1AfrOZ6dbTuaLvsfg5T5SaUaFBVBQNMVdDULv
+Bounceable address (for later access): kf_12YwcZZA1AfrOZ6dbTuaLvsfg5T5SaUaFBVBQNMVdDR8q
+mainnet:
+Non-bounceable address (for init): Uf_12YwcZZA1AfrOZ6dbTuaLvsfg5T5SaUaFBVBQNMVdDfll
+Bounceable address (for later access): Ef_12YwcZZA1AfrOZ6dbTuaLvsfg5T5SaUaFBVBQNMVdDaSg
+Succeeded
